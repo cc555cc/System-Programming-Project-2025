@@ -1,0 +1,10 @@
+{
+	"timestamp": "2025-11-10 14:42:14",
+	"file": "test_directory/test_file2.txt",
+	"event": "CREATE"
+}
+{
+	"timestamp": "2025-11-10 14:43:03",
+	"file": "test_directory/test_file.txt",
+	"event": "DELETE"
+}
