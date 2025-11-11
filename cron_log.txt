@@ -13,3 +13,5 @@ Setting up watches.  Beware: since -r was given, this may take a while!
 Watches established.
 Setting up watches.  Beware: since -r was given, this may take a while!
 Watches established.
+/home/lok-yung-chan/Project/Directory Watcher/directory_watch.sh: line 5: syntax error near unexpected token `else'
+/home/lok-yung-chan/Project/Directory Watcher/directory_watch.sh: line 5: `else #when the script is ran manually'
