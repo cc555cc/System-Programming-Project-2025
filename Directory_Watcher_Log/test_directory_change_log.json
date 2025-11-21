@@ -1,0 +1,15 @@
+{
+	"timestamp": "2025-11-21 11:08:12",
+	"file": "/home/lok-yung-chan/Project/DirectoryWatcher/test_directory/test_file1.txt",
+	"event": "DELETE"
+}
+{
+	"timestamp": "2025-11-21 11:11:11",
+	"file": "/home/lok-yung-chan/Project/DirectoryWatcher/test_directory/test_file1.txt",
+	"event": "DELETE"
+}
+{
+	"timestamp": "2025-11-21 11:14:14",
+	"file": "/home/lok-yung-chan/Project/DirectoryWatcher/test_directory/test_file2.txt",
+	"event": "CREATE"
+}
