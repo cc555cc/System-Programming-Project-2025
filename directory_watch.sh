@@ -1,6 +1,4 @@
 #!/bin/bash
-DISPLAY=:0 XAUTHORITY=/home/lok-yung-chan/.Xauthority /usr/bin/notify-send "Directory Watcher" "is running"
-
 #first argument as the directory to monitor
 target_directory="${1:-.}"
 #check directory validity
@@ -12,7 +10,6 @@ fi
 #when script is ran by crontab
 if [ "$CRON" = "1" ]; then
 	sleep 10
-	DISPLAY=:0 XAUTHORITY=/home/lok-yung-chan/.Xauthority /usr/bin/notify-send "Directory Watcher" "Cron mode activated" 
 	echo "crontab run";
 	target_directory="$1"
 	mkdir -p "$2/Directory_Watcher_Log"
