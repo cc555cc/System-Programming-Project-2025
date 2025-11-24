@@ -1,6 +1,8 @@
 #!/bin/bash
+
 #first argument as the directory to monitor
 target_directory="${1:-.}"
+target_directory="$(realpath "$target_directory")"
 #check directory validity
 if [ ! -d "$target_directory" ]; then
 	echo "The directory you entered does not exist"
@@ -11,10 +13,9 @@ fi
 if [ "$CRON" = "1" ]; then
 	sleep 10
 	echo "crontab run";
-	target_directory="$1"
 	mkdir -p "$2/Directory_Watcher_Log"
 	basename="$(basename "$1")"
-	file="$2/Directory_Watcher_Log/${basename}_change_log.json"
+	file="$2/Directory_Watcher_Log/${basename}_change_log.jsonl"
 else #when the script is ran manually
 	echo "manual run"
 	#define the directory where the user run the script manually
@@ -37,17 +38,17 @@ else #when the script is ran manually
 		echo "you accepted auto start"
 		echo "setting up in crontab now..."
 		#define script address
-		script_address="$initial_directory/directory_watch.sh"
-		cron_entry="@reboot CRON=1 /home/lok-yung-chan/Project/DirectoryWatcher/directory_watch.sh /home/lok-yung-chan/Project/DirectoryWatcher/test_directory /home/lok-yung-chan/Project/DirectoryWatcher /home/lok-yung-chan/Project/DirectoryWatcher/Directory_Watcher_Log"
+		script_address="${initial_directory}/directory_watch.sh"
+		cron_entry="@reboot CRON=1 ${script_address} ${target_directory} ${initial_directory} ${initial_directory}/Directory_Watcher_Log"
 
 		#check if a watcher for this directory already registered in crontab on this device
-		crontab -l 2>/dev/null | grep  -F "$cron_entry" >/dev/null
+		crontab -l 2>/dev/null | grep -F "$target_directory" >/dev/null
 
 		if [ $? -ne 0 ]; then #no duplicate entry
 			(crontab -l 2>/dev/null; echo "$cron_entry") | crontab -
 			echo "wrote $cron_entry successfully";
 		else
-			echo "cron entry already exist"
+			echo "cron entry for $watch_directory already exists"
 		fi
 
 	elif [[ "$input" == "n" ]]; then
